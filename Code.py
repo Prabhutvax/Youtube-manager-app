@@ -1,6 +1,12 @@
+import json
+
 
 def load_data():
-    pass
+    try:
+        with open('youtube.txt', 'r') as file:
+        retun json.load(file)#.txt file ko json mein convet krke tab save karega
+    except FileNotFoundError:
+        return []
 
 def list_all_videos(videos):
     pass
