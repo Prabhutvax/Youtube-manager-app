@@ -1,18 +1,26 @@
 import json
 
-
+x = 'youtube.txt'
 def load_data():
     try:
-        with open('youtube.txt', 'r') as file:
-        retun json.load(file)#.txt file ko json mein convet krke tab save karega
+        with open('x', 'r') as file:
+            return json.load(file)  # .txt file ko json mein convert krke tab save karega
     except FileNotFoundError:
         return []
 
+def save_data_helper(videos):
+    with open('x', 'w') as file:
+        json.dump(videos, file)  # json do imputs leta hai kya likhna hai (videos) aur kha likhna hai (file)
+
 def list_all_videos(videos):
-    pass
+    for index, video in enumerate(videos, start=1): #enumarate se index bna diya jo ki 1 se start hoga
+        print(f"{index}. ")
 
 def add_video(video):
-    pass
+    title = input ("Enter video title: ")
+    length= input ("Enter video length: ")
+    video.append({'title': title, 'length': length})
+    save_data_helper(video)
 
 def update_video(video):
     pass
@@ -32,6 +40,7 @@ def main():
         print("4. Delete a youtube video")
         print("5. Exit")
         choice = input("Enter your choice: ")
+        print(videos)
 
         match choice:
             case '1':
@@ -49,7 +58,6 @@ def main():
     
 if __name__ == "__main__":
     main()  # agr khi bhi  main ho code mein toh ye run hoga 
-
      
 
     
